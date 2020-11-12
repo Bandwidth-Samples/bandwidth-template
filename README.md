@@ -7,12 +7,17 @@
 <!-- TOC -->
 
 - [Repo Title REPLACE](#repo-title-replace)
+- [Description](#description)
 - [Bandwidth](#bandwidth)
 - [Environmental Variables](#environmental-variables)
 - [Callback URLs](#callback-urls)
     - [Ngrok](#ngrok)
 
 <!-- /TOC -->
+
+# Description
+
+A small description of what this sample app does
 
 # Bandwidth
 
@@ -25,11 +30,12 @@ For more information about API credentials see [here](https://dev.bandwidth.com/
 # Environmental Variables
 The sample app uses the below environmental variables.
 ```java
-BANDWIDTH_ACCOUNT_ID       // Your Bandwidth Account Id
-BANDWIDTH_APPLICATION_ID   // Your Application Id created in the dashboard
-BANDWIDTH_USERNAME         // Your Bandwidth API Token
-BANDWIDTH_PASSWORD         // Your Bandwidth API Secret
-BANDWIDTH_PHONENUMBER      // Your The Bandwidth Phone Number
+BANDWIDTH_ACCOUNT_ID                 // Your Bandwidth Account Id
+BANDWIDTH_VOICE_APPLICATION_ID       // Your Voice Application Id created in the dashboard
+BANDWIDTH_MESSAGING_APPLICATION_ID   // Your Messaging Application Id created in the dashboard
+BANDWIDTH_USERNAME                   // Your Bandwidth API Token
+BANDWIDTH_PASSWORD                   // Your Bandwidth API Secret
+BANDWIDTH_PHONENUMBER                // Your The Bandwidth Phone Number
 ```
 
 # Callback URLs
@@ -45,13 +51,6 @@ Below are the callback paths:
 A simple way to set up a callback URL is to use the tool [ngrok](https://ngrok.com/).  
 After you have downloaded and installed `ngrok` run the following command to open a public tunnel to port 8080
 ```cmd
-ngrok http 8080
+./ngrok http 8080
 ```
-You can view your public URL at http://127.0.0.1:4040 after ngrok is running.  You can also view the status of the tunnel and requests/responses here.
-
-
-
-
-
-
-
+You can view your public URL at http://127.0.0.1:8080 after ngrok is running.  You can also view the status of the tunnel and requests/responses here.

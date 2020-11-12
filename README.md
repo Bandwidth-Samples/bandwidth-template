@@ -36,7 +36,7 @@ BANDWIDTH_PHONENUMBER      // Your The Bandwidth Phone Number
 
 For a detailed introduction to Bandwidth Callbacks see https://dev.bandwidth.com/guides/callbacks/callbacks.html
 
-Below are the callback URL paths:
+Below are the callback paths:
 * `/callbacks/voiceCallback`
 * `<add other callbacks>`
 

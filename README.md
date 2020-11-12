@@ -28,7 +28,7 @@ The sample app uses the below environmental variables.
 BANDWIDTH_ACCOUNT_ID                 // Your Bandwidth Account Id
 BANDWIDTH_USERNAME                   // Your Bandwidth API Token
 BANDWIDTH_PASSWORD                   // Your Bandwidth API Secret
-BANDWIDTH_PHONENUMBER                // Your The Bandwidth Phone Number
+BANDWIDTH_PHONE_NUMBER                // Your The Bandwidth Phone Number
 BANDWIDTH_VOICE_APPLICATION_ID       // Your Voice Application Id created in the dashboard
 BANDWIDTH_MESSAGING_APPLICATION_ID   // Your Messaging Application Id created in the dashboard
 PORT                                 // The prot number you wish to run the sample on

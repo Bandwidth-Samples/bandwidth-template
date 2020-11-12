@@ -1,5 +1,20 @@
 # Compiled class file
 *.class
+/target
+/out
+/dist
+/bin
+/obj
+
+# IntelliJ
+.idea/
+*.iml
+
+# Vs Code
+.vscode/
+
+# Node
+/node_modules
 
 # Log file
 *.log

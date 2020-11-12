@@ -51,6 +51,6 @@ Below are the callback paths:
 A simple way to set up a callback URL is to use the tool [ngrok](https://ngrok.com/).  
 After you have downloaded and installed `ngrok` run the following command to open a public tunnel to port 8080
 ```cmd
-./ngrok http 8080
+ngrok http 8080
 ```
 You can view your public URL at http://127.0.0.1:8080 after ngrok is running.  You can also view the status of the tunnel and requests/responses here.

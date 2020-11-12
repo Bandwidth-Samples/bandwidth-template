@@ -18,7 +18,7 @@
 
 In order to use the Bandwidth API users need to set up the appropriate application at the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and create API tokens.
 
-To create an application log into the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and got to the `Applications` tab.  Fill out the **New Application** form selecting the service (Messaging or Voice) that the application will be used for.  All Bandwidth services require publicly accessible Callback URLs, for more information on how to set one up see [Callback URLs](#callback-urls).
+To create an application log into the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and navigate to the `Applications` tab.  Fill out the **New Application** form selecting the service (Messaging or Voice) that the application will be used for.  All Bandwidth services require publicly accessible Callback URLs, for more information on how to set one up see [Callback URLs](#callback-urls).
 
 For more information about API credentials see [here](https://dev.bandwidth.com/guides/accountCredentials.html#top)
 
@@ -42,7 +42,7 @@ Below are the callback paths:
 
 ## Ngrok
 
-A simple way to set up a callback URL is to use the tool [ngrok](https://ngrok.com/).  
+A simple way to set up a local callback URL for testing is to use the free tool [ngrok](https://ngrok.com/).  
 After you have downloaded and installed `ngrok` run the following command to open a public tunnel to port 8080
 ```cmd
 ngrok http 8080

@@ -35,7 +35,7 @@ BANDWIDTH_PASSWORD                   // Your Bandwidth API Secret
 BANDWIDTH_PHONE_NUMBER                // Your The Bandwidth Phone Number
 BANDWIDTH_VOICE_APPLICATION_ID       // Your Voice Application Id created in the dashboard
 BANDWIDTH_MESSAGING_APPLICATION_ID   // Your Messaging Application Id created in the dashboard
-BASE_URL                             // You public base url
+BASE_URL                             // Your public base url
 PORT                                 // The port number you wish to run the sample on
 ```
 

@@ -16,11 +16,11 @@
 <!-- /TOC -->
 
 # Description
-A short description of your sample app and its capabilities. 
+A short description of your sample app and its capabilities.
 
 # Bandwidth
 
-In order to use the Bandwidth API users need to set up the appropriate application at the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and create API tokens.
+In order to use the Bandwidth API users need to set up the appropriate application at the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and create API credentials.
 
 To create an application log into the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and navigate to the `Applications` tab.  Fill out the **New Application** form selecting the service (Messaging or Voice) that the application will be used for.  All Bandwidth services require publicly accessible Callback URLs, for more information on how to set one up see [Callback URLs](#callback-urls).
 
@@ -30,8 +30,8 @@ For more information about API credentials see [here](https://dev.bandwidth.com/
 The sample app uses the below environmental variables.
 ```java
 BANDWIDTH_ACCOUNT_ID                 // Your Bandwidth Account Id
-BANDWIDTH_USERNAME                   // Your Bandwidth API Token
-BANDWIDTH_PASSWORD                   // Your Bandwidth API Secret
+BANDWIDTH_USERNAME                   // Your Bandwidth API Username
+BANDWIDTH_PASSWORD                   // Your Bandwidth API Password
 BANDWIDTH_PHONE_NUMBER                // Your The Bandwidth Phone Number
 BANDWIDTH_VOICE_APPLICATION_ID       // Your Voice Application Id created in the dashboard
 BANDWIDTH_MESSAGING_APPLICATION_ID   // Your Messaging Application Id created in the dashboard

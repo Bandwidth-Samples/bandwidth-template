@@ -1,6 +1,5 @@
 # Repo Title REPLACE
 <a href="http://dev.bandwidth.com"><img src="https://s3.amazonaws.com/bwdemos/BW-VMP.png"/></a>
-</div>
 
  # Table of Contents
 
@@ -8,6 +7,7 @@
 
 - [Repo Title REPLACE](#repo-title-replace)
 - [Description](#description)
+    - [Run](#run)
 - [Bandwidth](#bandwidth)
 - [Environmental Variables](#environmental-variables)
 - [Callback URLs](#callback-urls)
@@ -16,7 +16,14 @@
 <!-- /TOC -->
 
 # Description
+
 A short description of your sample app and its capabilities.
+
+## Run
+
+```sh
+A short snippet on running the repo.
+```
 
 # Bandwidth
 
@@ -27,6 +34,7 @@ To create an application log into the [Bandwidth Dashboard](https://dashboard.ba
 For more information about API credentials see [here](https://dev.bandwidth.com/guides/accountCredentials.html#top)
 
 # Environmental Variables
+
 The sample app uses the below environmental variables.
 ```java
 BANDWIDTH_ACCOUNT_ID                 // Your Bandwidth Account Id

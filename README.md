@@ -31,7 +31,7 @@ For more information about API credentials see [here](https://dev.bandwidth.com/
 # Environmental Variables
 
 The sample app uses the below environmental variables.
-```java
+```sh
 BW_ACCOUNT_ID                        // Your Bandwidth Account Id
 BW_USERNAME                          // Your Bandwidth API Username
 BW_PASSWORD                          // Your Bandwidth API Password
@@ -40,7 +40,7 @@ BW_MESSAGING_APPLICATION_ID          // Your Messaging Application Id created in
 OUTBOUND_NUMBER                      // The number being dialed out to
 INBOUND_NUMBER                       // The number being dialed in to
 BASE_CALLBACK_URL                    // Your public base url to receive Bandwidth Webhooks. No trailing '/'
-PORT                                 // The port number you wish to run the sample on
+LOCAL_PORT                                 // The port number you wish to run the sample on
 ```
 
 # Callback URLs
@@ -57,7 +57,7 @@ Below are the callback paths:
 ## Run
 Use the following commands to run the application:
 
-```cmd
+```sh
 npm install
 npm start
 ```
@@ -66,7 +66,7 @@ npm start
 
 A simple way to set up a local callback URL for testing is to use the free tool [ngrok](https://ngrok.com/).  
 After you have downloaded and installed `ngrok` run the following command to open a public tunnel to your port (`$PORT`)
-```cmd
+```sh
 ngrok http $PORT
 ```
 You can view your public URL at `http://127.0.0.1:{PORT}` after ngrok is running.  You can also view the status of the tunnel and requests/responses here.

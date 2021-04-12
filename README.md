@@ -5,13 +5,14 @@
 
 <!-- TOC -->
 
-- [Repo Title REPLACE](#repo-title-replace)
-- [Description](#description)
-    - [Run](#run)
-- [Bandwidth](#bandwidth)
-- [Environmental Variables](#environmental-variables)
-- [Callback URLs](#callback-urls)
-    - [Ngrok](#ngrok)
+* [Repo Title REPLACE](#repo-title-replace)
+* [Description](#description)
+* [Pre-Requisites](#pre-requisites)
+* [Environmental Variables](#environmental-variables)
+* [Callback URLs](#callback-urls)
+* [Running the Application](#running-the-application)
+  * [Run](#run)
+  * [Ngrok](#ngrok)
 
 <!-- /TOC -->
 
@@ -19,31 +20,26 @@
 
 A short description of your sample app and its capabilities.
 
-## Run
+# Pre-Requisites
 
-```sh
-A short snippet on running the repo.
-```
+In order to use the Bandwidth API, users need to set up the appropriate application in their [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and create [API credentials](https://dev.bandwidth.com/guides/accountCredentials.html#top).
 
-# Bandwidth
+To create an application, log into the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and navigate to the `Applications` tab.  Fill out the **New Application** form, selecting the service (Messaging or Voice) that the application will be used for.  All Bandwidth services require publicly accessible Callback URLs. For more information on how to set one up see [Callback URLs](#callback-urls).
 
-In order to use the Bandwidth API users need to set up the appropriate application at the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and create API credentials.
-
-To create an application log into the [Bandwidth Dashboard](https://dashboard.bandwidth.com/) and navigate to the `Applications` tab.  Fill out the **New Application** form selecting the service (Messaging or Voice) that the application will be used for.  All Bandwidth services require publicly accessible Callback URLs, for more information on how to set one up see [Callback URLs](#callback-urls).
-
-For more information about API credentials see [here](https://dev.bandwidth.com/guides/accountCredentials.html#top)
+For more information about API credentials see [here](https://dev.bandwidth.com/guides/accountCredentials.html#top).
 
 # Environmental Variables
 
 The sample app uses the below environmental variables.
 ```java
-BANDWIDTH_ACCOUNT_ID                 // Your Bandwidth Account Id
-BANDWIDTH_USERNAME                   // Your Bandwidth API Username
-BANDWIDTH_PASSWORD                   // Your Bandwidth API Password
-BANDWIDTH_PHONE_NUMBER                // Your The Bandwidth Phone Number
-BANDWIDTH_VOICE_APPLICATION_ID       // Your Voice Application Id created in the dashboard
-BANDWIDTH_MESSAGING_APPLICATION_ID   // Your Messaging Application Id created in the dashboard
-BASE_URL                             // Your public base url
+BW_ACCOUNT_ID                        // Your Bandwidth Account Id
+BW_USERNAME                          // Your Bandwidth API Username
+BW_PASSWORD                          // Your Bandwidth API Password
+BW_VOICE_APPLICATION_ID              // Your Voice Application Id created in the dashboard
+BW_MESSAGING_APPLICATION_ID          // Your Messaging Application Id created in the dashboard
+OUTBOUND_NUMBER                      // The number being dialed out to
+INBOUND_NUMBER                       // The number being dialed in to
+BASE_CALLBACK_URL                    // Your public base url to receive Bandwidth Webhooks. No trailing '/'
 PORT                                 // The port number you wish to run the sample on
 ```
 
@@ -52,8 +48,19 @@ PORT                                 // The port number you wish to run the samp
 For a detailed introduction to Bandwidth Callbacks see https://dev.bandwidth.com/guides/callbacks/callbacks.html
 
 Below are the callback paths:
-* `/callbacks/voiceCallback`
+* `/callbacks/inbound/voice`
+* `/callbacks/outbound/messaging`
 * `<add other callbacks>`
+* **Should follow ``/callbacks/{direction}/{service}` conventions**
+
+# Running the Application
+## Run
+Use the following commands to run the application:
+
+```cmd
+npm install
+npm start
+```
 
 ## Ngrok
 

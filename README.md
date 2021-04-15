@@ -37,8 +37,8 @@ BW_USERNAME                          # Your Bandwidth API Username
 BW_PASSWORD                          # Your Bandwidth API Password
 BW_VOICE_APPLICATION_ID              # Your Voice Application Id created in the dashboard
 BW_MESSAGING_APPLICATION_ID          # Your Messaging Application Id created in the dashboard
-OUTBOUND_NUMBER                      # The number being dialed out to
-INBOUND_NUMBER                       # The number being dialed in to
+BW_NUMBER                            # The Bandwidth phone number involved with this application
+USER_NUMBER                          # The user's phone number involved with this application
 BASE_CALLBACK_URL                    # Your public base url to receive Bandwidth Webhooks. No trailing '/'
 LOCAL_PORT                           # The port number you wish to run the sample on
 ```

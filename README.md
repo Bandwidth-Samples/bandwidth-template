@@ -43,13 +43,20 @@ BASE_CALLBACK_URL                    # Your public base url to receive Bandwidth
 LOCAL_PORT                           # The port number you wish to run the sample on
 ```
 
-# Callback URLs
+# Application URLs
+
+* `/url/goes/here`
+  * Description of what happens when this URL is hit goes here
+
+## Callback URLs
 
 For a detailed introduction to Bandwidth Callbacks see https://dev.bandwidth.com/guides/callbacks/callbacks.html
 
 Below are the callback paths:
 * `/callbacks/inbound/voice`
+  * Description of what happens when this URL is hit goes here
 * `/callbacks/outbound/messaging`
+  * Description of what happens when this URL is hit goes here
 * `<add other callbacks>`
 * **Should follow ``/callbacks/{direction}/{service}` conventions**
 

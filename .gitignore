@@ -26,6 +26,9 @@
 **/vendor/*
 *.phar
 
+# Ruby
+Gemfile.lock
+
 # Log file
 *.log
 

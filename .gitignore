@@ -29,6 +29,10 @@
 # Ruby
 Gemfile.lock
 
+# python
+/venv
+__pycache__
+
 # Log file
 *.log
 

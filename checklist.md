@@ -51,21 +51,21 @@
  - other endpoints should match order listed in README
     - Message Status Callback:
       - Should have comment `This URL handles outbound message status callbacks.`
-      - message-sending -> 'message-sending type is only for MMS.'
-      - message-delivered -> 'Your message has been handed off to the Bandwidth's MMSC network, but has not been confirmed at the downstream carrier.'
-      - message-failed -> 'For MMS and Group Messages, you will only receive this callback if you have enabled delivery receipts on MMS.'
-      - else -> 'Message type does not match endpoint. This endpoint is used for message status callbacks only.'
+      - `message-sending` -> `message-sending type is only for MMS.`
+      - `message-delivered` -> `Your message has been handed off to the Bandwidth's MMSC network, but has not been confirmed at the downstream carrier.`
+      - `message-failed` -> `For MMS and Group Messages, you will only receive this callback if you have enabled delivery receipts on MMS.`
+      - `else -> `Message type does not match endpoint. This endpoint is used for message status callbacks only.`
     - Inbound Message Callback:
       - Should have comment `This URL handles inbound message callbacks.`
       - Should create object based on BandwidthCallbackMessage and  BandwidthMessage models
       - Should print the following in order with newlines in between: callback description, To: "", From: "", Text: ""
       - Media should be created with original media name in root folder of project
-      - If the callback type is not `message-received` -> Message type does not match endpoint. This endpoint is used for inbound messages only.\nOutbound message callbacks should be sent to /callbacks/outbound/messaging.
+      - If the callback type is not `message-received` -> `Message type does not match endpoint. This endpoint is used for inbound messages only.\nOutbound message callbacks should be sent to /callbacks/outbound/messaging.`
     - Auto Response Callback:
       - Should have comment `This URL handles inbound message callbacks.`
       - Should create object based on BandwidthCallbackMessage and  BandwidthMessage models
       - Should print the following in order with newlines in between: callback description, To: "", From: "", Text: ""
-      - If the callback type is not `message-received` -> Message type does not match endpoint. This endpoint is used for inbound messages only.\nOutbound message callbacks should be sent to /callbacks/outbound/messaging.
+      - If the callback type is not `message-received` -> `Message type does not match endpoint. This endpoint is used for inbound messages only.\nOutbound message callbacks should be sent to /callbacks/outbound/messaging.`
       - Response Map should be: 
          - stop: "STOP: OK, you'll no longer receive messages from us.",
          - quit: "QUIT: OK, you'll no longer receive messages from us.",
@@ -73,5 +73,11 @@
          - info: "INFO: This is the test responder service. Reply STOP or QUIT to opt out.",
          - default: "Please respond with a valid word. Reply HELP for help."
       - Response should have `[Auto Response] ` appended to the front of the message
-      - Should print newline then "Sending Auto Response" followed by another newline and the sent message in the same format as received message
+      - Should print newline, then `Sending Auto Response`, followed by another newline and the sent message in the same format as received message
 
+## Language Specific Rules
+
+   - Ruby
+      - user created variables should be in snake_case
+      - hashes should use symbols as keys
+      

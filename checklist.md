@@ -81,3 +81,6 @@
       - user created variables should be in snake_case
       - hashes should use symbols as keys
       
+   - C#
+      - will eventually be renamed to .NET for accuracy
+      - Running the Application should include: `Or open the project in Microsoft Visual Studio and run using the button in the toolbar.`

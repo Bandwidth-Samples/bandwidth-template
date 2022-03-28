@@ -78,10 +78,12 @@
   - Voice:
       - create call endpoint should be `/createCall`
   - MFA:
-       - Phone number prompt should be: `Please enter your phone number in E164 format (+19195551234): ` with a newline before only the first instance
-          - input should be validated with regex (`^\+[1-9]\d{4,14}$`) and repeat prompt: `Invalid phone number. Please enter your phone number in E164 format (+19195551234): `
-       - Method selection prompt should be: `Please select your MFA method.\nEnter 0 for voice or 1 for messaging: ` with a newline before only the first instance
-          - input should be validated using regex (`^[0-1]$`) and repreat promt: `Invalid selection. Enter 0 for voice or 1 for messaging: `
+      - CLI
+        - Phone number prompt should be: `Please enter your phone number in E164 format (+19195551234): ` with a newline before only the first instance
+            - input should be validated with regex (`^\+[1-9]\d{4,14}$`) and repeat prompt: `Invalid phone number. Please enter your phone number in E164 format (+19195551234): `
+        - Method selection prompt should be: `Please select your MFA method.\nEnter 0 for voice or 1 for messaging: ` with a newline before only the first instance
+            - input should be validated using regex (`^[0-1]$`) and repreat promt: `Invalid selection. Enter 0 for voice or 1 for messaging: `
+        - Valid/Invalid responses should be `Success!`/`Incorrect Code` respectively
 
 ## Language Specific Rules
 

@@ -27,6 +27,12 @@ For more information about API credentials see our [Account Credentials](https:/
 
 # Running the Application
 
+To install the required packages for this app, run the command:
+
+```sh
+# package install command here
+```
+
 Use the following command/s to run the application:
 
 ```sh

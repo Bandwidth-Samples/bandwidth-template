@@ -4,7 +4,7 @@
   <img src="https://s3.amazonaws.com/bwdemos/BW-VMP.png" title="Product Quick Start Guide" alt="Product Quick Start Guide"/> <!--src should be image located in repo-->
 </a>
 
- # Table of Contents
+# Table of Contents
 
 * [Description](#description)
 * [Pre-Requisites](#pre-requisites)
@@ -45,8 +45,8 @@ The sample app uses the below environmental variables.
 
 ```sh
 BW_ACCOUNT_ID                        # Your Bandwidth Account Id
-BW_USERNAME                          # Your Bandwidth API Username
-BW_PASSWORD                          # Your Bandwidth API Password
+BW_CLIENT_ID                         # Your Bandwidth API OAuth Client Id
+BW_CLIENT_SECRET                     # Your Bandwidth API OAuth Client Secret
 BW_NUMBER                            # The Bandwidth phone number involved with this application
 USER_NUMBER                          # The user's phone number involved with this application
 BW_VOICE_APPLICATION_ID              # Your Voice Application Id created in the dashboard

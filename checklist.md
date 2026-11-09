@@ -6,19 +6,45 @@
  - Does the README content match that of other sample apps of the same type?
  - Is the correct image in the README and repo?
    - Image should link to product specific Quick Start Guide/About Page
- - All headers should have an empty line above and below
- - All code blocks should have an empty line above and below
- - Does the TOC match the template and rest of README?
+   - Voice:
+     - Copy `icons/icon-voice.svg` from this repo to `icon-voice.svg` in the sample's root
+     - Header should be:
+
+       ```html
+       <a href="https://dev.bandwidth.com/docs/voice/programmable-voice/quickStart/">
+         <img src="./icon-voice.svg" title="Voice Quick Start Guide" alt="Voice Quick Start Guide"/>
+       </a>
+       ```
+   - Messaging:
+     - Copy `icons/icon-messaging.svg` from this repo to `icon-messaging.svg` in the sample's root
+     - Header should be:
+
+       ```html
+       <a href="https://dev.bandwidth.com/docs/messaging/quickStart">
+         <img src="./icon-messaging.svg" title="Messaging Quick Start Guide" alt="Messaging Quick Start Guide"/>
+       </a>
+       ```
+   - MFA:
+     - Copy `icons/icon-mfa.svg` from this repo to `icon-mfa.svg` in the sample's root
+     - Header should be:
+
+       ```html
+       <a href="https://dev.bandwidth.com/docs/mfa/">
+         <img src="./icon-mfa.svg" title="Multi-Factor Auth About Page" alt="Multi-Factor Auth About Page"/>
+       </a>
+       ```
+ - Does the TOC match the template and rest of README? A leading space before `# Table of Contents` is fine
  - Is description correct?
-   - phone numbers to use in order: +191915551234, +19195554321
+   - phone numbers to use in order: +19195551234, +19195554321
    - sample text should be "Hello World!"
    - callbacks should match those in callback section
    - descriptions should match those from other samples of the same feature
    - language specific reference to error catching method
  - Running the Application should have language specific command
  - Environmental Variables should match template order and only include those used in the sample
+   - Auth is OAuth only: `BW_CLIENT_ID` and `BW_CLIENT_SECRET`, never `BW_USERNAME`/`BW_PASSWORD`
  - Callback URL Link should link to product specific webhooks page
-   - callbacks should match template format
+   - callback paths should be `/callbacks/{direction}/{service}`, with events as sub-paths (e.g. `/callbacks/outbound/voice/gather`, `/callbacks/inbound/voice/recordingAvailable`)
    - callbacks should be ordered: outbound>inbound>others
  - Ngrok section shows language specific port information
 
@@ -35,55 +61,52 @@
 ## Package Requirement File
 
  - Should only reference packages required by the specific sample app
+ - Don't hand-pick versions. Copy the requirement file from the most recently migrated sample of the same language, since Dependabot keeps those current
+ - Java: dependencies should only be `bandwidth-sdk` and `spring-boot-starter-web`. No `commons-io`, `javax.activation-api`, `spring-boot-starter-test` or `lombok`; use a `record` for model classes
+
+## Dependabot
+
+ - Copy `.github/dependabot.template.yml` to `.github/dependabot.yml` and fill in the placeholders
+ - Only SDK major versions get their own PR, all other dependencies are grouped monthly
+ - Placeholder values by language:
+
+   | Language | `<ecosystem>` | `<directory>` | `<sdk-package>` |
+   |---|---|---|---|
+   | Ruby | `bundler` | `/` | `bandwidth-sdk` |
+   | Node | `npm` | `/` | `bandwidth-sdk` |
+   | Python | `pip` | `/` | `bandwidth-sdk` |
+   | C# | `nuget` | the project folder, e.g. `/VoiceRecord` | `Bandwidth.Sdk` |
+   | Java | `maven` | `/` | `com.bandwidth.sdk:bandwidth-sdk` |
+   | PHP | `composer` | `/` | `bandwidth/sdk` |
+
+## Contract Test
+
+ - Should have `.github/workflows/test.yml` calling the language's workflow from `Bandwidth-Samples/sample-app-tooling`, with `sample` set to the sample type
+ - See the `sample-app-tooling` README for the caller template and inputs
 
 ## Sample App
 
+ - Must pass its contract test (`sample-app-tooling/contracts/<type>.yml`), which covers routes, status codes, BXML and env var handling. The rules below cover what the contract can't check
  - contains correct imports/requirements
  - environment variables should match the order in the README
- - SDK config and api instances come after imports and envirnmental variables, but before rest of sample app
+ - missing environment variables, or a non-integer `LOCAL_PORT`, should exit with a message pointing to the README
+ - SDK config and api instances come after imports and environmental variables, but before rest of sample app
  - Text responses should resemble sentences and end in periods.
  - Messaging:
-    - send/create endpoints come first
-        - Messaging:
-          - send message endpoint should be `/sendMessage`
-          - Should have comment `Make a POST request to this URL to send a text message.`
-          - should capture `to` and `text` from incoming post
-          - media sent should be `https://cdn2.thecatapi.com/images/MTY3ODIyMQ.jpg`
-    - other endpoints should match order listed in README
-        - Message Status Callback:
-          - Should have comment `This URL handles outbound message status callbacks.`
-          - `message-sending` -> `message-sending type is only for MMS.`
-          - `message-delivered` -> `Your message has been handed off to the Bandwidth's MMSC network, but has not been confirmed at the downstream carrier.`
-          - `message-failed` -> `For MMS and Group Messages, you will only receive this callback if you have enabled delivery receipts on MMS.`
-          - `else` -> `Message type does not match endpoint. This endpoint is used for message status callbacks only.`
-        - Inbound Message Callback:
-          - Should have comment `This URL handles inbound message callbacks.`
-          - Should create object based on BandwidthCallbackMessage and  BandwidthMessage models
-          - Should print the following in order with newlines in between: callback description, To: "", From: "", Text: ""
-          - Media should be created with original media name in root folder of project
-          - If the callback type is not `message-received` -> `Message type does not match endpoint. This endpoint is used for inbound messages only.\nOutbound message callbacks should be sent to /callbacks/outbound/messaging.`
-        - Auto Response Callback:
-          - Should have comment `This URL handles inbound message callbacks.`
-          - Should create object based on BandwidthCallbackMessage and  BandwidthMessage models
-          - Should print the following in order with newlines in between: callback description, To: "", From: "", Text: ""
-          - If the callback type is not `message-received` -> `Message type does not match endpoint. This endpoint is used for inbound messages only.\nOutbound message callbacks should be sent to /callbacks/outbound/messaging.`
-          - Response Map should be: 
-            - stop: "STOP: OK, you'll no longer receive messages from us.",
-            - quit: "QUIT: OK, you'll no longer receive messages from us.",
-            - help: "Valid words are: STOP, QUIT, HELP, and INFO. Reply STOP or QUIT to opt out.",
-            - info: "INFO: This is the test responder service. Reply STOP or QUIT to opt out.",
-            - default: "Please respond with a valid word. Reply HELP for help."
-          - Response should have `[Auto Response] ` appended to the front of the message
-          - Should print newline, then `Sending Auto Response`, followed by another newline and the sent message in the same format as received message
-  - Voice:
-      - create call endpoint should be `/createCall`
-  - MFA:
-      - CLI
-        - Phone number prompt should be: `Please enter your phone number in E164 format (+19195551234): ` with a newline before only the first instance
-            - input should be validated with regex (`^\+[1-9]\d{4,14}$`) and repeat prompt: `Invalid phone number. Please enter your phone number in E164 format (+19195551234): `
-        - Method selection prompt should be: `Please select your MFA method.\nEnter 0 for voice or 1 for messaging: ` with a newline before only the first instance
-            - input should be validated using regex (`^[0-1]$`) and repreat promt: `Invalid selection. Enter 0 for voice or 1 for messaging: `
-        - Valid/Invalid responses should be `Success!`/`Incorrect Code` respectively
+    - Message Status Callback should print:
+      - `message-sending` -> `message-sending type is only for MMS.`
+      - `message-delivered` -> `Your message has been handed off to the Bandwidth's MMSC network, but has not been confirmed at the downstream carrier.`
+      - `message-failed` -> `For MMS and Group Messages, you will only receive this callback if you have enabled delivery receipts on MMS.`
+    - Inbound Message Callback:
+      - Should print the following in order with newlines in between: callback description, To: "", From: "", Text: ""
+      - Media should be saved with original media name in a `media/` folder in the project root, and `media/` should be in the `.gitignore`
+    - Auto Response Callback:
+      - Response Map should be:
+        - stop: "STOP: OK, you'll no longer receive messages from us.",
+        - quit: "QUIT: OK, you'll no longer receive messages from us.",
+        - help: "Valid words are: STOP, QUIT, HELP, and INFO. Reply STOP or QUIT to opt out.",
+        - info: "INFO: This is the test responder service. Reply STOP or QUIT to opt out.",
+        - default: "Please respond with a valid word. Reply HELP for help."
 
 ## Language Specific Rules
 
